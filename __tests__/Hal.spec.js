@@ -25,10 +25,25 @@ describe('Hal', () => {
       });
     });
   })
+
   describe('.listen', () => {
+    describe('when passed a string that starts with "Good"', () => {
+      describe('and also contains "morning"', () => {
+        beforeEach(() => {
+          test.phrase = 'Good Morning'
+          test.subject = new test.Hal(test.phrase);
+        })
+        it('should reply with "Good morning Dave"', () => {
+          const regex = /Good.*morning.*/i;
+          const result = regex.test(test.subject.listen(test.phrase));
+          test.subject = new test.Hal(test.phrase);
+          expect(result).toBe(true);
+        })
+      })
+    })
     describe('when passed string that starts with "when"', () => {
       describe('and also contains "is"', () => {
-        describe('and also contains it', () => {
+        describe('and also contains "it"', () => {
           beforeEach(() => {
             test.phrase = 'When is it Hal?'
             test.subject = new test.Hal(test.phrase);
@@ -54,15 +69,16 @@ describe('Hal', () => {
     });
     describe('when passed a string that starts with "what"', () => {
       describe('and also contains "is"', () => {
-        // what is your name
-        describe('and also contains your', () =>{
-          describe('and also contains name',()=>{
+        describe('and also contains your', () => {
+          describe('and also contains name', () => {
             it(`should return a string containing "I am a HAL 9000... computer."`, () => {
-            const regex = /I AM A HAL 9000/i;
-            const result = regex.test(test.subject.listen(test.phrase));
-            test.subject = new test.Hal(test.phrase);
-            expect(result).toBe(true);
-          })
+              test.phrase = 'WHat is your name?'
+              const regex = /I AM A HAL 9000/i;
+              test.subject = new test.Hal(test.phrase);
+              const result = regex.test(test.subject.listen(test.phrase));
+
+              expect(result).toBe(true);
+            })
           })
         })
         describe('and also contains it', () => {
@@ -105,6 +121,22 @@ describe('Hal', () => {
         });
       });
     });
+    describe('when passed a string that starts with "Open"', () => {
+      describe('when the string also contains "door"', () => {
+        beforeEach(() => {
+          test.phrase = 'Open the pod bay doors, HAL.'
+          test.subject = new test.Hal(test.phrase);
+        })
+        it(`should return a string containing "I'm sorry, Dave. I'm afraid I can't do that."`, () => {
+          const regex = /I can't do that/i;
+          const result = regex.test(test.subject.listen(test.phrase));
+          test.subject = new test.Hal(test.phrase);
+          expect(result).toBe(true);
+        });
+      })
+
+
+    })
     describe('when the string is not reconized', () => {
       beforeEach(() => {
         test.phrase = 'Hamburger chicken bacon'
@@ -115,5 +147,6 @@ describe('Hal', () => {
           .toThrow("I am afraid I can't do that Dave.");
       })
     })
+    //  Open the pod bay doors, HAL.
   });
 })
