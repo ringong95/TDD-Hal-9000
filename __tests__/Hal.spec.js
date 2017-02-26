@@ -132,7 +132,6 @@ describe('Hal', () => {
         it(`should return a string containing "I'm sorry, Dave. I'm afraid I can't do that."`, () => {
           const regex = /I can't do that/i;
           const result = regex.test(test.subject.listen(test.phrase));
-
           expect(result).toBe(true);
         });
       })
@@ -145,6 +144,10 @@ describe('Hal', () => {
 
           })
           it('should return a string containing "Is it free?"')
+          const regex = /is.*it.*free.*\?/i;
+          const result = regex.test(test.subject.listen(test.phrase));
+
+          expect(result).toBe(true);
         })
       })
     })
