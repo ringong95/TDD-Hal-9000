@@ -73,7 +73,12 @@ describe('Hal', () => {
         describe('and it also contains "you"', () => {
           describe('and it also contains "want"', () => {
             describe('and it also contains "dinner"', () => {
-
+              it(`should return a string containing "I don't know, how about pizza?"`, () => {
+                test.phrase = 'What do you want for dinner?'
+                const regex = /i.*(dont|don't).*know/i;
+                const result = regex.test(test.subject.listen(test.phrase));
+                expect(result).toBe(true);
+              })
             })
           })
         })
