@@ -71,9 +71,9 @@ describe('Hal', () => {
       describe('and also contains "is"', () => {
         describe('and also contains your', () => {
           describe('and also contains name', () => {
-            it(`should return a string containing "I am a HAL 9000... computer."`, () => {
+            it(`should return a string containing "I am the H.A.L 9000. You may call me Hal."`, () => {
               test.phrase = 'WHat is your name?'
-              const regex = /I AM A HAL 9000/i;
+              const regex = /9000.+hal/i;
               test.subject = new test.Hal(test.phrase);
               const result = regex.test(test.subject.listen(test.phrase));
 
