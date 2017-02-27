@@ -1,0 +1,7 @@
+// BDD
+// Asking Hal a question.
+// As a user i want to tallk to Hal so i can have fun
+Given that the user asks a question when the question has insde of it "time" then Hal will responde wit 4:30pm
+
+
+Given that hte user asks about Hal's ability to do somtehing and it has a name in it then Hal will respond with "I am afraid I can't do that Dave"
