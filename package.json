@@ -14,7 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "jest": "^19.0.0",
-    "jest-cli": "^19.0.2",
-    "nlp_compromise": "^6.5.3"
+    "jest-cli": "^19.0.2"
   }
 }
